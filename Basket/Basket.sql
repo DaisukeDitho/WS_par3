@@ -15,6 +15,7 @@ create table match (
     id serial primary key,
     idequipe1 int,
     idequipe2 int,
+    Date DATE,
     FOREIGN KEY (idequipe1) REFERENCES equipe(id),
      FOREIGN KEY (idequipe2) REFERENCES equipe(id)
 );
@@ -37,9 +38,11 @@ create table action(
     idaction int,
     FOREIGN KEY (idmatch) REFERENCES match(id),
     FOREIGN KEY (idjoueur) REFERENCES joueur(id),
-    FOREIGN KEY (idaction) REFERENCES action(id)
+    FOREIGN KEY (idaction) REFERENCES liste_action(id)
 );
 insert into equipe VALUES(DEFAULT,'Rockets');
 insert into equipe VALUES(DEFAULT,'Nets');
 insert into Joueur VALUES(DEFAULT,'ailier','Pondro Dory',1);
-insert into MATCH VALUES(DEFAULT,1,2);
+insert into MATCH VALUES(1,1,2,'2023-11-21');
+insert into action VALUES(DEFAULT,1,2,3);
+

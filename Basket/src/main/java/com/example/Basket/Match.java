@@ -1,5 +1,7 @@
 package com.example.Basket;
 
+import java.sql.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,8 +13,26 @@ public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     int id;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     int idequipe1;
     int idequipe2;
+
+    public Match(int id, int idequipe1, int idequipe2, Date date) {
+        this.id = id;
+        this.idequipe1 = idequipe1;
+        this.idequipe2 = idequipe2;
+        this.date = date;
+    }
+
+    Date date;
 
     public Match(int id, int idequipe1, int idequipe2) {
         this.id = id;
@@ -22,7 +42,7 @@ public class Match {
 
     @Override
     public String toString() {
-        return "Match [id=" + id + ", idequipe1=" + idequipe1 + ", idequipe2=" + idequipe2 + "]";
+        return "Match [id=" + id + ", idequipe1=" + idequipe1 + ", idequipe2=" + idequipe2 + ", date=" + date + "]";
     }
 
     public Match() {
