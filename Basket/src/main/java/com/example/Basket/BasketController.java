@@ -17,11 +17,6 @@ public class BasketController {
     @Autowired
     BasketService basketService;
 
-    @GetMapping("/leniny")
-    public String leniny() {
-        return "leniny";
-    }
-
     @GetMapping("/equipe")
     public List<Equipe> getallEquipes() {
         return basketService.getallEquipe();
@@ -33,12 +28,24 @@ public class BasketController {
     }
 
     @GetMapping("/joueur")
-    public List<Joueur> getallJoueurs() {
-        return basketService.getallJoueur();
+    public Reponse<List<Joueur>> getallJoueurs() {
+        Reponse<List<Joueur>> result=new Reponse<List<Joueur>>();
+
+        List<Joueur> retour=basketService.getallJoueur();
+        if(retour==null)
+        {
+            result.setErreur("Pas de joueur");
+        }
+        else
+        {
+            result.setData(retour);
+        }
+        return result;
     }
 
     @GetMapping("/match")
-    public List getallMatchs() {
+    public Reponse<List> getallMatchs() {
+        Reponse<List> liste=new Reponse<List>();
         ArrayList fn = new ArrayList<>();
         List<Match> matchs = basketService.getallMatch();
         ArrayList<Optional> equipe = new ArrayList();
@@ -48,7 +55,14 @@ public class BasketController {
         }
         fn.add(matchs);
         fn.add(equipe);
-        return fn;
+        if(fn==null){
+            liste.setErreur("vide");
+
+        }
+        else{
+            liste.setData(fn);
+        }
+        return liste;
     }
 
     @GetMapping("/action")
