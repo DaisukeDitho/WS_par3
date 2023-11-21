@@ -1,6 +1,7 @@
 package com.example.Basket;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,10 @@ public class BasketService {
 
     public List<Equipe> getallEquipe() {
         return equipedao.findAll();
+    };
+
+    public Optional<Equipe> getEquipe(int id) {
+        return equipedao.findById(id);
     };
 
     public List<Joueur> getallJoueur() {

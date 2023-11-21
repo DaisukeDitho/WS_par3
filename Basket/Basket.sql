@@ -15,6 +15,8 @@ create table match (
     id serial primary key,
     idequipe1 int,
     idequipe2 int,
+    score1 int,
+    score2 int,
     Date DATE,
     FOREIGN KEY (idequipe1) REFERENCES equipe(id),
      FOREIGN KEY (idequipe2) REFERENCES equipe(id)
@@ -42,7 +44,7 @@ create table action(
 );
 insert into equipe VALUES(DEFAULT,'Rockets');
 insert into equipe VALUES(DEFAULT,'Nets');
-insert into Joueur VALUES(DEFAULT,'ailier','Pondro Dory',1);
-insert into MATCH VALUES(1,1,2,'2023-11-21');
+insert into MATCH VALUES(DEFAULT,55,56,135,126,'2023-11-21');
 insert into action VALUES(DEFAULT,1,2,3);
-
+insert into Joueur VALUES(DEFAULT,'meneur','Trae Young',55);
+insert into Joueur VALUES(DEFAULT,'Aillier Fort','John Collins',55);
